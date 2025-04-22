@@ -30,9 +30,10 @@ void countSort(vector<long long>& v, long long exp) {
         v[i] = output[i];
 }
 
-void radixsort(vector<long long>& v) {
+vector<long long> radixsort(vector<long long>& v) {
     long long m = getMax(v);
 
     for (long long exp = 1; m / exp > 0; exp *= 10)
         countSort(v, exp);
+    return v;
 }
