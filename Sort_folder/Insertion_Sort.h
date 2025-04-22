@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void insertionSort(vector<long long>& v) {
+vector<long long> insertionSort(vector<long long>& v) {
     int n = v.size();
     for (int i = 1; i < n; ++i) {
         long long key = v[i];
@@ -13,4 +13,5 @@ void insertionSort(vector<long long>& v) {
         }
         v[j + 1] = key;
     }
+    return v;
 }
