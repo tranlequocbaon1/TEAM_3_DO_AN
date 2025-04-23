@@ -3,10 +3,7 @@
 #include <iostream>
 using namespace std;
 
-// A binary search based function
-// to find the position
-// where item should be inserted
-// in a[low..high]
+
 int binarySearch(vector<long long>a, int item,
 				int low, int high, long long& comparison)
 {
@@ -42,10 +39,8 @@ vector<long long> Binary_insetion_sort(vector<long long>&a, long long& compariso
     {
         j = i - 1;
         selected = a[i];
- 
-        // find location where selected should be inserted
         loc = binarySearch(a, selected, 0, j, comparison);
-        // Move all elements after location to create space
+
         while (j >= loc)
         {
             a[j + 1] = a[j];
