@@ -1,20 +1,26 @@
 #pragma once
-#include "header.h"
-void Merge(vector<int>& arr, int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+#include <vector>
+#include<iostream>
+using namespace std;
+void Merge(vector<long long>& arr, long long left, long long mid, long long right,long long &comparison) {
+    long long n1 = mid - left + 1;
+    long long n2 = right - mid;
 
-    vector<int> L(n1), R(n2);
+    vector<long long> L(n1), R(n2);
 
-    for (int i = 0; i < n1; i++)
+    for (long long i = 0; i < n1; i++){
+        comparison++;
         L[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
+    }
+    for (long long j = 0; j < n2; j++){
+        comparison++;
         R[j] = arr[mid + 1 + j];
-
-    int i = 0, j = 0;
-    int k = left;
+    }
+    long long i = 0, j = 0;
+    long long k = left;
 
     while (i < n1 && j < n2) {
+        comparison++;
         if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
@@ -23,37 +29,44 @@ void Merge(vector<int>& arr, int left, int mid, int right) {
             arr[k] = R[j];
             j++;
         }
+        comparison++;
         k++;
     }
 
     while (i < n1) {
+        comparison++;
         arr[k] = L[i];
         i++;
         k++;
     }
 
     while (j < n2) {
+        comparison++;
         arr[k] = R[j];
         j++;
         k++;
     }
 }
 
-void MergeSort_re(vector<int>& arr, int left, int right) {
-    if (left >= right)
+void MergeSort_re(vector<long long>& arr, long long left, long long right,long long &comparison) {
+    if (left >= right){
+        comparison++;
         return;
 
+    }
+        
     int mid = left + (right - left) / 2;
 
-    MergeSort_re(arr, left, mid);
-    MergeSort_re(arr, mid + 1, right);
-    Merge(arr, left, mid, right);
+    MergeSort_re(arr, left, mid,comparison);
+    MergeSort_re(arr, mid + 1, right,comparison);
+    Merge(arr, left, mid, right,comparison);
 }
 
-vector<int>MergeSort(vector<int>arr) {
-    vector<int>newarr = arr;
-    int n = newarr.size();
+long long MergeSort(vector<long long>& arr) {
+    long long comparison=0;
+    vector<long long>newarr = arr;
+    long long n = newarr.size();
 
-    MergeSort_re(newarr, 0, n - 1);
-    return newarr;
+    MergeSort_re(newarr, 0, n - 1,comparison);
+    return comparison;
 }

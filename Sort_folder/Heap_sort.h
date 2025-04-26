@@ -1,52 +1,50 @@
+#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
 
-
-void heapify(vector<long long>& arr, int n, int i){
-
-    
+// Hàm vun đống
+void heapify(vector<long long>& arr, int n, int i, long long& comparison) {
     int largest = i;
-
-    
     int l = 2 * i + 1;
-
-    
     int r = 2 * i + 2;
 
-    
-    if (l < n && arr[l] > arr[largest])
-        largest = l;
+    // So sánh con trái
+    if (l < n) {
+        comparison++;
+        if (arr[l] > arr[largest])
+            largest = l;
+    }
 
-    
-    if (r < n && arr[r] > arr[largest])
-        largest = r;
+    // So sánh con phải
+    if (r < n) {
+        comparison++;
+        if (arr[r] > arr[largest])
+            largest = r;
+    }
 
-    
+    // Nếu cần hoán đổi và gọi đệ quy
     if (largest != i) {
         swap(arr[i], arr[largest]);
-
-        
-        heapify(arr, n, largest);
+        heapify(arr, n, largest, comparison);
     }
 }
 
-
-vector<long long> heapSort(vector<long long>& arr){
+// Hàm Heap Sort chính
+long long heapSort(vector<long long>& arr) {
+    long long comparison = 0;
     int n = arr.size();
 
-    
+    // Xây dựng heap
     for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
+        heapify(arr, n, i, comparison);
 
-    
+    // Trích xuất từng phần tử từ heap
     for (int i = n - 1; i > 0; i--) {
-
-        
-        swap(arr[0], arr[i]);
-
-        
-        heapify(arr, i, 0);
+        swap(arr[0], arr[i]);           // Đưa phần tử lớn nhất về cuối
+        heapify(arr, i, 0, comparison); // Gọi heapify lại cho heap còn lại
+        comparison++;
     }
-  return arr;
+
+    return comparison;
 }
