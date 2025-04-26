@@ -1,5 +1,5 @@
 #pragma once
-#include "Binary_insertion_sort.h"
+#include "Binary_Insertion_sort.h"
 #include "Bubble_sort.h"
 #include "Counting_sort.h"
 #include "Flash_sort.h"
