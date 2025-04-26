@@ -1,0 +1,13 @@
+#pragma once
+#include "Binary_insertion_sort.h"
+#include "Bubble_sort.h"
+#include "Counting_sort.h"
+#include "Flash_sort.h"
+#include "Heap_sort.h"
+#include "Insertion_sort.h"
+#include "Merge_sort.h"
+#include "Quick_sort.h"
+#include "Radix_sort.h"
+#include "Selection_sort.h"
+#include "Shaker_sort.h"
+#include "Shell_sort.h"
