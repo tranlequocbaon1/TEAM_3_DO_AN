@@ -3,10 +3,9 @@
 #include <iostream>
 using namespace std;
 
-vector<long long> bubbleSort(vector<long long>& v, long long& comparison) {
+long long bubbleSort(vector<long long>& v) {
     int n = v.size();
-
-    
+    long long comparision = 0;
     for (int i = 0; i < n - 1; i++) {
 
         
@@ -14,11 +13,11 @@ vector<long long> bubbleSort(vector<long long>& v, long long& comparison) {
           
             if (v[j] > v[j + 1])
             {
-                ++comparison;
+                ++comparision;
                 swap(v[j], v[j + 1]);
             }
               
         }
     }
-    return v;
+    return comparision;
 }

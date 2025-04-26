@@ -1,15 +1,5 @@
 #include"performance.h"
-#include"Binary_insertion_sort.h"
-#include"Counting_sort.h"
-#include"flashSort.h"
-#include"Heap_sort.h"
-#include"Insertion_Sort.h"
-#include"RAdix_Sort.h"
-#include"Merge_sort.h"
-#include"Quick_sort.h"
-#include"Selection_sort.h"
-#include"shaker_sort.h"
-#include"Shell_Sort.h"
+#include"SortHeader.h"
 int main(){
     int n;
 	cout << "Nhap so luong phan tu: ";
